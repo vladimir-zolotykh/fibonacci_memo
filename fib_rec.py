@@ -30,7 +30,7 @@ class Timethis:
     def __enter__(self):
         self.start = time.time()
 
-    def __exit__(self):
+    def __exit__(self, exc_type, exc_val, exc_tb):
         self.end = time.time()
         print("{}: {}".format(self.label, self.end - self.start))
 
@@ -40,5 +40,7 @@ class Timethis:
 # getting fib_rec(42): 33.33191108703613
 
 if __name__ == "__main__":
-    with timethis("getting fib_rec(N)"):
-        fib_rec(42)
+    with Timethis("getting fib_rec(N)"):
+        fib_rec(37)
+    # with timethis("getting fib_rec(N)"):
+    #     fib_rec(42)
