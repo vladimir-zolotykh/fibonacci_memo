@@ -61,10 +61,11 @@ def test_fib_rec():
 
 
 if __name__ == "__main__":
-    with Timethis("getting fib_rec(N)"):
-        fib_rec(37)
-    with Timethis("getting fibonacci_optimized(N)"):
-        fibonacci_optimized(37)
+    N = 37
+    with Timethis(f"getting fib_rec({N})"):
+        fib_rec(N)
+    with Timethis(f"getting fibonacci_optimized({N})"):
+        fibonacci_optimized(N)
     # with timethis("getting fib_rec(N)"):
     #     fib_rec(42)
     # print(fib_rec(5), fibonacci_optimized(5))
