@@ -18,7 +18,17 @@ def fibonacci_optimized(n):
 
 
 def fibonacci_memo(n, cash):
-    pass
+    if n < 0:
+        raise ValueError(f"{n = }: must be positive")
+    if n in (1, 2):
+        return n
+    if n in cash:
+        return cash[n]
+    fm1 = fibonacci_memo(n - 1, cash)
+    fm2 = fibonacci_memo(n - 2, cash)
+    res = fm1 + fm2
+    cash[n] = res
+    return res
 
 
 @contextmanager
@@ -47,8 +57,17 @@ class Timethis:
 # getting fib_rec(40): 11.172739028930664
 # getting fib_rec(42): 33.33191108703613
 
+
+def test_fib_rec():
+    for k in range(1, 37):
+        assert fib_rec(k) == fibonacci_optimized(k)
+
+
 if __name__ == "__main__":
     with Timethis("getting fib_rec(N)"):
         fib_rec(37)
+    with Timethis("getting fibonacci_optimized(N)"):
+        fibonacci_optimized(37)
     # with timethis("getting fib_rec(N)"):
     #     fib_rec(42)
+    # print(fib_rec(5), fibonacci_optimized(5))
