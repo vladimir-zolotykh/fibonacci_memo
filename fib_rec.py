@@ -13,6 +13,14 @@ def fib_rec(n):
     return fib_rec(n - 1) + fib_rec(n - 2)
 
 
+def fibonacci_optimized(n):
+    return fibonacci_memo(n, {})
+
+
+def fibonacci_memo(n, cash):
+    pass
+
+
 @contextmanager
 def timethis(label):
     start = time.time()
