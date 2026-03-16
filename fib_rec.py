@@ -24,8 +24,8 @@ def fibonacci_memo(n, cash):
         return n
     if n in cash:
         return cash[n]
-    cash[n] = res = fibonacci_memo(n - 1, cash) + fibonacci_memo(n - 2, cash)
-    return res
+    cash[n] = fibonacci_memo(n - 1, cash) + fibonacci_memo(n - 2, cash)
+    return cash[n]
 
 
 @contextmanager
